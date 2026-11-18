@@ -1,0 +1,848 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T13:15:38+00:00",
+  "title": "Design System: Thinking Spree · Cash",
+  "extensions": {
+    "colorMeta": {
+      "shell": {
+        "role": "primary",
+        "displayName": "Forest Shell",
+        "canonical": "#173A2D",
+        "oklch": "oklch(31.8% 0.047 166.6)",
+        "tonalRamp": [
+          "#030E09",
+          "#162A22",
+          "#2E483E",
+          "#49695C",
+          "#698B7D",
+          "#90ADA0",
+          "#B8D0C5",
+          "#E1F4EB"
+        ],
+        "dark": "#173A2D"
+      },
+      "shell-2": {
+        "role": "primary",
+        "displayName": "Raised Forest",
+        "canonical": "#21503E",
+        "oklch": "oklch(39.3% 0.060 165.7)",
+        "tonalRamp": [
+          "#010F08",
+          "#102B21",
+          "#284A3C",
+          "#416C5A",
+          "#628D7A",
+          "#8AAF9E",
+          "#B3D2C3",
+          "#DDF5EA"
+        ],
+        "dark": "#21503E"
+      },
+      "shell-ink": {
+        "role": "neutral",
+        "displayName": "Shell Ink",
+        "canonical": "#EEF3EF",
+        "oklch": "oklch(95.9% 0.007 151.9)",
+        "tonalRamp": [
+          "#0A0C0A",
+          "#232624",
+          "#404340",
+          "#5E625F",
+          "#7F8480",
+          "#A2A6A3",
+          "#C7CAC7",
+          "#EDEFED"
+        ],
+        "dark": "#E3ECE6"
+      },
+      "shell-mute": {
+        "role": "neutral",
+        "displayName": "Shell Sage",
+        "canonical": "#B5CCBF",
+        "oklch": "oklch(82.4% 0.031 160.9)",
+        "tonalRamp": [
+          "#060D09",
+          "#1D2822",
+          "#37463E",
+          "#53665C",
+          "#74887D",
+          "#99AAA0",
+          "#BFCDC5",
+          "#E6F2EB"
+        ],
+        "dark": "#A9C2B4"
+      },
+      "shell-line": {
+        "role": "neutral",
+        "displayName": "Shell Rule",
+        "canonical": "#2C5A47",
+        "oklch": "oklch(42.9% 0.060 164.8)",
+        "tonalRamp": [
+          "#010F08",
+          "#112B20",
+          "#284A3C",
+          "#416C59",
+          "#628D7A",
+          "#8AAF9E",
+          "#B3D2C3",
+          "#DDF5E9"
+        ],
+        "dark": "#2C5A47"
+      },
+      "wall": {
+        "role": "neutral",
+        "displayName": "Whiteboard Wall",
+        "canonical": "#F4F6F3",
+        "oklch": "oklch(97.1% 0.004 134.8)",
+        "tonalRamp": [
+          "#0B0B0A",
+          "#242524",
+          "#414240",
+          "#60625F",
+          "#818380",
+          "#A4A5A3",
+          "#C8C9C8",
+          "#EEEFED"
+        ],
+        "dark": "#101814"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#FFFFFF",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#A5A5A5",
+          "#C9C9C9",
+          "#EEEEEE"
+        ],
+        "dark": "#16211B"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Forest Ink",
+        "canonical": "#17221D",
+        "oklch": "oklch(24.0% 0.018 165.3)",
+        "tonalRamp": [
+          "#080C0A",
+          "#202724",
+          "#3B4540",
+          "#59645F",
+          "#798680",
+          "#9DA8A3",
+          "#C3CCC7",
+          "#E9F0ED"
+        ],
+        "dark": "#E4ECE7"
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Second Ink",
+        "canonical": "#33403A",
+        "oklch": "oklch(35.8% 0.020 165.6)",
+        "tonalRamp": [
+          "#080C0A",
+          "#1F2724",
+          "#3B4540",
+          "#58655F",
+          "#798680",
+          "#9CA8A3",
+          "#C2CCC7",
+          "#E9F1ED"
+        ],
+        "dark": "#C3CEC8"
+      },
+      "mute": {
+        "role": "neutral",
+        "displayName": "Muted Sage Grey",
+        "canonical": "#56635C",
+        "oklch": "oklch(48.6% 0.019 162.1)",
+        "tonalRamp": [
+          "#080C0A",
+          "#202723",
+          "#3B453F",
+          "#59655E",
+          "#79867F",
+          "#9DA8A2",
+          "#C2CCC7",
+          "#E9F1EC"
+        ],
+        "dark": "#9AA9A1"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#D8DED8",
+        "oklch": "oklch(89.4% 0.010 145.5)",
+        "tonalRamp": [
+          "#0A0C0A",
+          "#232623",
+          "#3F433F",
+          "#5E635E",
+          "#7F847F",
+          "#A2A6A2",
+          "#C6CAC6",
+          "#ECEFEC"
+        ],
+        "dark": "#2A3830"
+      },
+      "line-2": {
+        "role": "neutral",
+        "displayName": "Inner Rule",
+        "canonical": "#E8ECE7",
+        "oklch": "oklch(93.9% 0.008 139.4)",
+        "tonalRamp": [
+          "#0A0C0A",
+          "#242623",
+          "#404340",
+          "#5F625E",
+          "#80837F",
+          "#A3A6A2",
+          "#C7CAC7",
+          "#EDEFED"
+        ],
+        "dark": "#1F2A24"
+      },
+      "in": {
+        "role": "state",
+        "displayName": "Actual Green (above safety line)",
+        "canonical": "#2E7D4F",
+        "oklch": "oklch(52.9% 0.106 154.6)",
+        "tonalRamp": [
+          "#001103",
+          "#002E15",
+          "#124F2D",
+          "#2A7147",
+          "#4E9468",
+          "#7BB58E",
+          "#A7D7B6",
+          "#D4F9DF"
+        ],
+        "dark": "#4FA676"
+      },
+      "good": {
+        "role": "state",
+        "displayName": "Good Green (alias of in)",
+        "canonical": "#2E7D4F",
+        "oklch": "oklch(52.9% 0.106 154.6)",
+        "tonalRamp": [
+          "#001103",
+          "#002E15",
+          "#124F2D",
+          "#2A7147",
+          "#4E9468",
+          "#7BB58E",
+          "#A7D7B6",
+          "#D4F9DF"
+        ],
+        "dark": "#4FA676"
+      },
+      "out": {
+        "role": "direction",
+        "displayName": "Money-Out Blue",
+        "canonical": "#3B5BA9",
+        "oklch": "oklch(48.8% 0.130 265.1)",
+        "tonalRamp": [
+          "#020826",
+          "#11224D",
+          "#273E78",
+          "#3F5DA5",
+          "#5F7FCB",
+          "#86A4E6",
+          "#AFC9FF",
+          "#DAEFFF"
+        ],
+        "dark": "#6F8FDB"
+      },
+      "fc": {
+        "role": "forecast",
+        "displayName": "Forecast Orange",
+        "canonical": "#D9731F",
+        "oklch": "oklch(66.0% 0.155 53.6)",
+        "tonalRamp": [
+          "#210000",
+          "#471000",
+          "#702900",
+          "#9D4300",
+          "#C36618",
+          "#E08F58",
+          "#FCB88C",
+          "#FFE1BF"
+        ],
+        "dark": "#D27A35"
+      },
+      "fc-ink": {
+        "role": "forecast",
+        "displayName": "Forecast Text Orange",
+        "canonical": "#A8530F",
+        "oklch": "oklch(53.7% 0.133 51.7)",
+        "tonalRamp": [
+          "#1E0100",
+          "#431400",
+          "#6B2E00",
+          "#964909",
+          "#BB6B35",
+          "#D99267",
+          "#F6BA97",
+          "#FFE3C7"
+        ],
+        "dark": "#E7955A"
+      },
+      "crit": {
+        "role": "state",
+        "displayName": "Coral (below zero / most urgent)",
+        "canonical": "#C23B32",
+        "oklch": "oklch(55.0% 0.173 28.0)",
+        "tonalRamp": [
+          "#250000",
+          "#4E0001",
+          "#7A1612",
+          "#A92F27",
+          "#D15449",
+          "#EE8174",
+          "#FFADA1",
+          "#FFDACF"
+        ],
+        "dark": "#E2675C"
+      },
+      "warn": {
+        "role": "state",
+        "displayName": "Amber (below safety line)",
+        "canonical": "#B98500",
+        "oklch": "oklch(65.1% 0.135 80.9)",
+        "tonalRamp": [
+          "#190600",
+          "#3A1E00",
+          "#5E3A00",
+          "#855700",
+          "#A87903",
+          "#C79E53",
+          "#E6C489",
+          "#FFEBBD"
+        ],
+        "dark": "#D9AA30"
+      },
+      "note": {
+        "role": "state",
+        "displayName": "Slate (keep an eye)",
+        "canonical": "#6A7790",
+        "oklch": "oklch(56.8% 0.042 263.4)",
+        "tonalRamp": [
+          "#070B14",
+          "#1E2532",
+          "#394254",
+          "#566178",
+          "#76839A",
+          "#9AA5BA",
+          "#C0C9DB",
+          "#E7EFFD"
+        ],
+        "dark": "#93A0B8"
+      },
+      "ser-in": {
+        "role": "series",
+        "displayName": "Series Forest (client in)",
+        "canonical": "#173A2D",
+        "oklch": "oklch(31.8% 0.047 166.6)",
+        "tonalRamp": [
+          "#030E09",
+          "#162A22",
+          "#2E483E",
+          "#49695C",
+          "#698B7D",
+          "#90ADA0",
+          "#B8D0C5",
+          "#E1F4EB"
+        ],
+        "dark": "#CFDAD3"
+      },
+      "ser-out": {
+        "role": "series",
+        "displayName": "Series Grey (operating out)",
+        "canonical": "#8E9A93",
+        "oklch": "oklch(67.4% 0.017 160.4)",
+        "tonalRamp": [
+          "#080C0A",
+          "#212723",
+          "#3C4440",
+          "#5A645E",
+          "#7B857F",
+          "#9EA8A2",
+          "#C3CBC7",
+          "#EAF0EC"
+        ],
+        "dark": "#6B7871"
+      },
+      "seq-1": {
+        "role": "sequential",
+        "displayName": "Sequential 1 (lowest cash)",
+        "canonical": "#84958B",
+        "oklch": "oklch(65.3% 0.024 159.9)",
+        "tonalRamp": [
+          "#070D09",
+          "#1F2722",
+          "#3A453E",
+          "#57655D",
+          "#77877E",
+          "#9BA9A1",
+          "#C1CCC6",
+          "#E8F1EC"
+        ],
+        "dark": "#6B7871",
+        "note": "Part of the defined sequential scale seq-1..4: #84958B, #5E7A6C, #3A5A4B, #173A2D"
+      },
+      "seq-2": {
+        "role": "sequential",
+        "displayName": "Sequential 2",
+        "canonical": "#5E7A6C",
+        "oklch": "oklch(55.3% 0.039 163.1)",
+        "tonalRamp": [
+          "#040E09",
+          "#1A2922",
+          "#33473D",
+          "#4F685B",
+          "#6F897C",
+          "#95ABA0",
+          "#BBCFC5",
+          "#E4F3EB"
+        ],
+        "dark": "#8FA89A",
+        "note": "Part of the defined sequential scale seq-1..4: #84958B, #5E7A6C, #3A5A4B, #173A2D"
+      },
+      "seq-3": {
+        "role": "sequential",
+        "displayName": "Sequential 3",
+        "canonical": "#3A5A4B",
+        "oklch": "oklch(43.8% 0.045 163.6)",
+        "tonalRamp": [
+          "#030E09",
+          "#172A21",
+          "#30483D",
+          "#4B695B",
+          "#6C8B7B",
+          "#92AC9F",
+          "#B9CFC4",
+          "#E2F3EA"
+        ],
+        "dark": "#B5D3C2",
+        "note": "Part of the defined sequential scale seq-1..4: #84958B, #5E7A6C, #3A5A4B, #173A2D"
+      },
+      "seq-4": {
+        "role": "sequential",
+        "displayName": "Sequential 4 (above safety line)",
+        "canonical": "#173A2D",
+        "oklch": "oklch(31.8% 0.047 166.6)",
+        "tonalRamp": [
+          "#030E09",
+          "#162A22",
+          "#2E483E",
+          "#49695C",
+          "#698B7D",
+          "#90ADA0",
+          "#B8D0C5",
+          "#E1F4EB"
+        ],
+        "dark": "#E3F2EA",
+        "note": "Part of the defined sequential scale seq-1..4: #84958B, #5E7A6C, #3A5A4B, #173A2D"
+      },
+      "grid": {
+        "role": "neutral",
+        "displayName": "Gridline",
+        "canonical": "#E3E8E3",
+        "oklch": "oklch(92.6% 0.009 145.5)",
+        "tonalRamp": [
+          "#0A0C0A",
+          "#232623",
+          "#404340",
+          "#5E625E",
+          "#7F847F",
+          "#A2A6A2",
+          "#C7CAC7",
+          "#EDEFED"
+        ],
+        "dark": "#213029"
+      },
+      "axis": {
+        "role": "neutral",
+        "displayName": "Axis Grey",
+        "canonical": "#9AA59F",
+        "oklch": "oklch(71.1% 0.015 162.3)",
+        "tonalRamp": [
+          "#080C0A",
+          "#212724",
+          "#3D4440",
+          "#5A645F",
+          "#7B8580",
+          "#9FA7A3",
+          "#C4CBC7",
+          "#EAF0ED"
+        ],
+        "dark": "#627069"
+      },
+      "focus": {
+        "role": "interaction",
+        "displayName": "Focus Orange",
+        "canonical": "#D9731F",
+        "oklch": "oklch(66.0% 0.155 53.6)",
+        "tonalRamp": [
+          "#210000",
+          "#471000",
+          "#702900",
+          "#9D4300",
+          "#C36618",
+          "#E08F58",
+          "#FCB88C",
+          "#FFE1BF"
+        ],
+        "dark": "#D9731F"
+      },
+      "gate-wall": {
+        "role": "gate",
+        "displayName": "Studio Wall",
+        "canonical": "#D9D6CB",
+        "oklch": "oklch(87.5% 0.015 94.2)",
+        "tonalRamp": [
+          "#0C0B08",
+          "#262520",
+          "#44423B",
+          "#646158",
+          "#858279",
+          "#A7A59D",
+          "#CBC9C2",
+          "#F0EEE9"
+        ]
+      },
+      "gate-note": {
+        "role": "gate",
+        "displayName": "Sticky Note Yellow",
+        "canonical": "#F7E27B",
+        "oklch": "oklch(90.9% 0.126 98.1)",
+        "tonalRamp": [
+          "#120A00",
+          "#302400",
+          "#504100",
+          "#736000",
+          "#95821C",
+          "#B5A65A",
+          "#D7CA8E",
+          "#F9F0C0"
+        ]
+      },
+      "gate-note-ink": {
+        "role": "gate",
+        "displayName": "Sticky Note Ink",
+        "canonical": "#2B2610",
+        "oklch": "oklch(26.8% 0.037 96.8)",
+        "tonalRamp": [
+          "#0D0B04",
+          "#282518",
+          "#464231",
+          "#67624C",
+          "#88836C",
+          "#AAA591",
+          "#CDC9B9",
+          "#F2EFE1"
+        ]
+      },
+      "gate-error": {
+        "role": "gate",
+        "displayName": "Gate Error Red",
+        "canonical": "#8E1F17",
+        "oklch": "oklch(42.6% 0.148 29.0)",
+        "tonalRamp": [
+          "#220000",
+          "#490906",
+          "#73221A",
+          "#A03B30",
+          "#C75E50",
+          "#E4887B",
+          "#FFB2A6",
+          "#FFDDD3"
+        ]
+      },
+      "fc-wash": {
+        "role": "forecast",
+        "displayName": "Forecast Wash",
+        "canonical": "rgba(217, 115, 31, .07)",
+        "dark": "rgba(210, 122, 53, .10)",
+        "note": "Background of the forecast zone in charts."
+      }
+    },
+    "typographyMeta": {
+      "verdict": {
+        "displayName": "Verdict",
+        "purpose": "Map verdict only; italic second line in the state colour. 22px on phone."
+      },
+      "verdict-what-if": {
+        "displayName": "What-if verdict",
+        "purpose": "What-if result sentence; figures inside switch to grotesk 600."
+      },
+      "gate-heading": {
+        "displayName": "Gate heading",
+        "purpose": "Sticky-note heading on the passcode gate, italic second line."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Stage headings."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Figure-strip values (17px in month card and chat facts; 26px in Show working)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Panel and chart headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text; 14.5px on phone; lead max 72ch."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Tables, bars, change lists; tabular numerals only in columnar contexts."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Figure labels, keys, notes (mute)."
+      },
+      "chart-text": {
+        "displayName": "Chart text",
+        "purpose": "Axis ticks and chart labels; direct labels 600 ink with a paper halo."
+      }
+    },
+    "shadows": [
+      {
+        "name": "note",
+        "value": "0 1px 2px rgba(23, 34, 29, .06), 0 4px 14px rgba(23, 34, 29, .05)",
+        "dark": "0 1px 2px rgba(0, 0, 0, .3)",
+        "purpose": "Watch-list notes and tooltip; the one soft step."
+      },
+      {
+        "name": "sheet",
+        "value": "-10px 0 30px rgba(0, 0, 0, .12)",
+        "purpose": "Show working panel overlaying content."
+      },
+      {
+        "name": "gate-note",
+        "value": "0 2px 3px rgba(0, 0, 0, .12), 0 14px 30px rgba(0, 0, 0, .18)",
+        "purpose": "Sticky note on the gate scene only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "marker-draw",
+        "value": "stroke-dashoffset 1.15s cubic-bezier(.3,.7,.2,1), opacity .6s ease 1.25s",
+        "purpose": "7px marker stroke at 32% opacity traces the already-visible exact cash line once, then fades. Skipped under reduced motion."
+      },
+      {
+        "name": "replay-step",
+        "value": "520ms per month; 1500ms on months with notes; 900ms under reduced motion",
+        "purpose": "Replay steps month by month; each frame is a complete chart with a caption."
+      },
+      {
+        "name": "gate-lamp",
+        "value": "opacity .9s ease-out",
+        "purpose": "Lamp glow switches on after a correct code."
+      },
+      {
+        "name": "gate-whiteboard",
+        "value": "opacity .9s ease-out .4s",
+        "purpose": "Whiteboard fills in with the T-Sprint row and a cash line."
+      },
+      {
+        "name": "gate-leave",
+        "value": "opacity .6s ease-out .2s",
+        "purpose": "Gate fades out."
+      },
+      {
+        "name": "gate-shake",
+        "value": ".42s cubic-bezier(.36,.07,.19,.97)",
+        "purpose": "Sticky note shakes on a wrong code."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation/transition durations .01ms",
+        "purpose": "Global prefers-reduced-motion override."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "1180px",
+        "purpose": "Watch list and What-if stack; scenarios 2-up."
+      },
+      {
+        "name": "phone",
+        "value": "760px",
+        "purpose": "Scrollable fading tab strip, 2-column figure strip, bottom-sheet Show working, scenarios 1-up."
+      },
+      {
+        "name": "chart-phone",
+        "value": "560px",
+        "purpose": "Line/column charts switch to phone geometry (520px for week dots and budget)."
+      }
+    ],
+    "chartMarks": {
+      "lineWidth": "2px",
+      "dotActual": "r 4.8, colour fill, 2px paper ring",
+      "dotForecast": "r 4.6, paper fill, 2.4px colour ring",
+      "forecastLine": "var(--fc), dash 6 5",
+      "planComparison": "var(--axis), dash 5 5, no dots",
+      "safetyLine": "var(--good), 1.3px, dash 5 5",
+      "zeroLine": "var(--axis), 1.2px",
+      "bars": "max 24px wide, 4px rounded data end, square baseline",
+      "budgetTick": "2.5px ink, round caps",
+      "forecastBudget": "paper fill, 2.2px var(--fc) outline",
+      "directLabels": "last actual + last forecast only; 600 ink; 4px paper halo; end labels spread >= 17px",
+      "axes": "one y-axis; tick text in lakh short form",
+      "interaction": "every month a data-month hit target; hover syncs charts, margin, tables; tooltip with exact figures",
+      "access": "role=img + aria-label summary; Table toggle on every chart"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Shell-green action (Replay, Ask); turns orange while pressed.",
+      "html": "<button class=\"ds-btn\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 4l13 8-13 8z\"/></svg>Replay</button> <button class=\"ds-btn\" aria-pressed=\"true\">Stop</button>",
+      "css": ".ds-btn{font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;display:inline-flex;align-items:center;gap:7px;border:1px solid #173A2D;background:#173A2D;color:#fff;border-radius:8px;padding:7px 13px;font-size:13.5px;font-weight:600;min-height:36px;cursor:pointer}.ds-btn svg{width:15px;height:15px;fill:currentColor}.ds-btn:hover{filter:brightness(1.12)}.ds-btn:focus-visible{outline:2.5px solid #D9731F;outline-offset:2px}.ds-btn[aria-pressed=true]{background:#D9731F;border-color:#D9731F}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action: Table toggle, Back to the plan, Ask Claude.",
+      "html": "<button class=\"ds-btn-ghost\">Table</button>",
+      "css": ".ds-btn-ghost{font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;display:inline-flex;align-items:center;border:1px solid #D8DED8;background:transparent;color:#17221D;border-radius:8px;padding:7px 13px;font-size:13.5px;font-weight:600;min-height:36px;cursor:pointer}.ds-btn-ghost:hover{border-color:#33403A}.ds-btn-ghost:focus-visible{outline:2.5px solid #D9731F;outline-offset:2px}"
+    },
+    {
+      "name": "Stage Tabs",
+      "kind": "nav",
+      "refersTo": "tab-current",
+      "description": "Folder tabs on the green shell; the current tab joins the wall and carries an orange dot.",
+      "html": "<nav class=\"ds-shell\"><a class=\"ds-tab\" aria-current=\"page\" href=\"#\"><b>Map</b><small>Where cash stands</small></a><a class=\"ds-tab\" href=\"#\"><b>Sketch</b><small>Trends</small></a><a class=\"ds-tab\" href=\"#\"><b>Decide</b><small>What-if</small></a></nav>",
+      "css": ".ds-shell{font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;display:flex;gap:4px;background:#173A2D;padding:14px 16px 0}.ds-tab{display:grid;line-height:1.25;text-decoration:none;color:#B5CCBF;padding:9px 16px 12px;border-radius:9px 9px 0 0}.ds-tab b{font-weight:600;font-size:14.5px}.ds-tab small{font-size:12px;opacity:.85}.ds-tab:hover{color:#EEF3EF;background:#21503E}.ds-tab:focus-visible{outline:2.5px solid #D9731F;outline-offset:2px}.ds-tab[aria-current=page]{background:#F4F6F3;color:#173A2D}.ds-tab[aria-current=page] b::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:#D9731F;margin-right:7px;vertical-align:2px}"
+    },
+    {
+      "name": "Sticker Dots",
+      "kind": "chip",
+      "refersTo": "",
+      "description": "The state language: solid = actual, ring = forecast; colour = state.",
+      "html": "<span class=\"ds-dots\"><i class=\"ds-dot\"></i><i class=\"ds-dot warn\"></i><i class=\"ds-dot crit\"></i><i class=\"ds-dot slate\"></i><i class=\"ds-dot ring\"></i></span> <span class=\"ds-tag\"><i class=\"ds-dot ring\"></i>Forecast</span>",
+      "css": ".ds-dots{display:inline-flex;gap:4px;align-items:center}.ds-dot{display:inline-block;width:11px;height:11px;border-radius:50%;background:#2E7D4F;box-sizing:border-box}.ds-dot.warn{background:#B98500}.ds-dot.crit{background:#C23B32}.ds-dot.slate{background:#6A7790}.ds-dot.ring{background:transparent;border:2.4px solid #D9731F}.ds-tag{font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:#A8530F}"
+    },
+    {
+      "name": "Watch-list Note",
+      "kind": "card",
+      "refersTo": "watch-note",
+      "description": "A white note on the wall: 1-3 urgency dots, exact amount, title, note, Actual/Forecast tag.",
+      "html": "<button class=\"ds-note\"><span class=\"ds-top\"><span class=\"ds-d\"><i></i><i></i><i></i></span><b>&minus;&#8288;&#8377;7,17,154</b></span><span class=\"ds-t\">Plan runs out of cash in November 2026</span><span class=\"ds-n\">November budget against cash today; nothing expected in</span></button>",
+      "css": ".ds-note{font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;display:grid;gap:4px;width:320px;text-align:left;background:#fff;color:#17221D;border:1px solid #D8DED8;border-radius:10px;padding:12px 14px 13px;box-shadow:0 1px 2px rgba(23,34,29,.06),0 4px 14px rgba(23,34,29,.05);cursor:pointer;font-size:15px}.ds-note:hover{border-color:#33403A}.ds-note:focus-visible{outline:2.5px solid #D9731F;outline-offset:2px}.ds-top{display:flex;justify-content:space-between;align-items:center}.ds-d{display:inline-flex;gap:4px}.ds-d i{width:11px;height:11px;border-radius:50%;box-sizing:border-box;border:2.4px solid #C23B32}.ds-t{font-weight:600;font-size:14.5px;line-height:1.35}.ds-n{color:#56635C;font-size:12.5px}"
+    },
+    {
+      "name": "Show-working Figure",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Every figure is a button with a dotted underline that opens its working.",
+      "html": "<div class=\"ds-fig\"><button class=\"ds-w\">&#8377;1,92,490.53</button><span class=\"ds-l\">Cash at 31 Oct 2026</span></div>",
+      "css": ".ds-fig{font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;display:grid;gap:2px;padding:13px 0}.ds-w{all:unset;cursor:pointer;font-weight:600;font-size:22px;letter-spacing:-.01em;line-height:1.2;border-radius:4px;text-decoration:underline dotted rgba(23,34,29,.35);text-underline-offset:4px;text-decoration-thickness:1.5px;color:#17221D}.ds-w:hover{text-decoration-color:#D9731F}.ds-w:focus-visible{outline:2.5px solid #D9731F;outline-offset:2px}.ds-l{color:#56635C;font-size:12.5px}"
+    },
+    {
+      "name": "Verdict",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Serif verdict; italic second line in the state colour.",
+      "html": "<h2 class=\"ds-verdict\">Cash closed October at &#8377;1,92,491.<em>On the plan, it runs out in November 2026.</em></h2>",
+      "css": ".ds-verdict{font:500 26px/1.28 'Source Serif 4',Georgia,serif;color:#173A2D;margin:0;max-width:30em}.ds-verdict em{display:block;font-style:italic;color:#C23B32}"
+    },
+    {
+      "name": "Chat Input",
+      "kind": "input",
+      "refersTo": "input-text",
+      "description": "Ask the data question field.",
+      "html": "<input class=\"ds-input\" placeholder=\"e.g. What did NEN pay this year?\">",
+      "css": ".ds-input{font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;border:1px solid #D8DED8;border-radius:9px;padding:10px 12px;background:#fff;color:#17221D;min-height:44px;font-size:15px;width:320px}.ds-input:focus-visible{outline:2.5px solid #D9731F;outline-offset:2px}"
+    },
+    {
+      "name": "Suggestion Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Suggested question under the chat.",
+      "html": "<button class=\"ds-chip\">How long will cash last?</button>",
+      "css": ".ds-chip{font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;border:1px solid #D8DED8;background:#fff;color:#17221D;border-radius:99px;padding:6px 12px;font-size:13px;min-height:34px;cursor:pointer}.ds-chip:hover{border-color:#33403A}.ds-chip:focus-visible{outline:2.5px solid #D9731F;outline-offset:2px}"
+    },
+    {
+      "name": "Gate Sticky Note",
+      "kind": "card",
+      "refersTo": "gate-note",
+      "description": "Passcode form pinned to the studio wall; shakes on a wrong code.",
+      "html": "<form class=\"ds-gnote\"><p class=\"ds-gh\">The studio opens at 9.<em>Passcode, please.</em></p><input type=\"password\" aria-label=\"Passcode\"><button type=\"button\">Open the studio</button></form>",
+      "css": ".ds-gnote{font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;position:relative;display:grid;gap:10px;width:300px;background:#F7E27B;color:#2B2610;padding:26px 26px 22px;border-radius:2px;transform:rotate(-1.2deg);box-shadow:0 2px 3px rgba(0,0,0,.12),0 14px 30px rgba(0,0,0,.18)}.ds-gnote::before{content:'';position:absolute;top:-9px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:#C23B32}.ds-gh{font:500 23px/1.25 'Source Serif 4',Georgia,serif;margin:0}.ds-gh em{display:block;font-style:italic}.ds-gnote input{border:0;border-bottom:2px solid #2B2610;background:rgba(255,255,255,.45);padding:10px;font-size:18px;border-radius:4px 4px 0 0;min-height:44px}.ds-gnote input:focus-visible{outline:2.5px solid #173A2D;outline-offset:2px}.ds-gnote button{border:0;background:#173A2D;color:#fff;border-radius:8px;padding:11px 14px;font-weight:600;min-height:44px;cursor:pointer}.ds-gnote button:hover{filter:brightness(1.12)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Decide Wall",
+    "overview": "Cash read the way a T-Sprint team decides. A flat forest-green shell holds the brand and the six stage tabs (Map, Sketch, Decide, Prototype, Test, Ask); below it sits a cool whiteboard-white wall where a plain serif verdict leads, a ruled figure strip follows, and charts carry an exact-figure margin. Coloured sticker dots are the single state language across every chart, list and label.\n\nAccuracy beats atmosphere. Every figure is exact, traceable (Show working) and labelled actual or forecast. Decoration earns its place only by meaning something: the dots are data, the gate scene is the one piece of set dressing, and it sits outside the dashboard.",
+    "keyCharacteristics": [
+      "Flat green shell, whiteboard wall, white paper panels with hairline borders.",
+      "Sticker dots: solid = actual, ring = forecast, colour = state, count = urgency.",
+      "Orange is the forecast colour in data.",
+      "Serif only for the verdict voice; grotesk for everything else, modest sizes.",
+      "Every number is a button that opens its working."
+    ],
+    "rules": [
+      {
+        "name": "The Sticker Rule",
+        "body": "Dots are the only state language. Solid = actual, ring = forecast. Colour = state: green above the safety line, amber below it, coral below zero or most urgent, slate = keep an eye. On the watch list, 1–3 dots = urgency (3 coral, 2 amber, 1 slate); a forecast item shows rings in its severity colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Orange-Is-Forecast Rule",
+        "body": "In data marks, orange means forecast and nothing else: ring dots, the dashed forecast line, outlined budget bars, the forecast wash, forecast text and rows. Outside the data, the build uses the same orange only as the interaction signal: focus ring, hover/highlight wash, current-tab dot, pressed Replay, slider accent, selected scenario border.",
+        "section": "colors"
+      },
+      {
+        "name": "The Non-Sticker Series Rule",
+        "body": "Series that are not states (Sketch in/out columns, horizontal bars, actual spend) use forest `ser-in` and grey `ser-out`, never sticker colours. Non-operating money is an outlined grey bar. Magnitude grids use the `seq-1..4` ramp.",
+        "section": "colors"
+      },
+      {
+        "name": "The Exact Figure Rule",
+        "body": "Figures are exact `en-IN` rupees with Indian grouping (₹1,92,490.53; paisa where shown, whole rupees where `dp=0`). The short lakh/crore form (₹1.92L, ₹1.24Cr) appears only on chart axes and direct labels. Negatives use a true minus (−) joined to ₹ by a word joiner (U+2060) so they never break across lines.",
+        "section": "typography"
+      },
+      {
+        "name": "The Columnar Numerals Rule",
+        "body": "Tabular figures apply only where numbers stack in columns: tables, Show working steps, tooltip rows, slider readouts. Figure strips, verdicts and labels keep proportional figures.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "**Do** use the sticker code exactly: solid = actual, ring = forecast, green/amber/coral/slate = state, 1–3 dots = urgency.",
+      "**Do** keep orange for forecast in data marks; use `ser-in`/`ser-out` for series and `seq-1..4` for magnitude.",
+      "**Do** show exact `en-IN` figures with Indian grouping; keep lakh/crore short forms to chart axes and direct labels.",
+      "**Do** make every figure a Show working button, label actual vs forecast, and give every chart a table view.",
+      "**Do** use one y-axis per chart and direct labels instead of legends where they fit.",
+      "**Do** use `minmax(0,1fr)` tracks and `min-width: 0` on new grids.",
+      "**Do** respect `prefers-reduced-motion`; motion only traces or steps through data that is already exact."
+    ],
+    "donts": [
+      "**Don't** use Poppins, serif capitals, or oversized zoomed-in titles; type stays at the modest sizes above.",
+      "**Don't** use emoji icons; icons are inline stroked SVG.",
+      "**Don't** add decoration that carries no meaning, or put any theme behind figures.",
+      "**Don't** add a language switch.",
+      "**Don't** invent metrics the workbook does not hold (ARR, MRR, pipeline).",
+      "**Don't** add 3D; it was tried for the gate and skipped because it added no meaning.",
+      "**Don't** use count-up number animations or animate a line in from nothing.",
+      "**Don't** use sticker colours (green, amber, coral, slate, orange) for non-state series.",
+      "**Don't** add a second y-axis.",
+      "**Don't** apply tabular figures outside columnar contexts."
+    ]
+  }
+}
