@@ -149,6 +149,11 @@ async (page) => {
   ok("Prototype: plan scenario ends where the plan ends", sc[0] === X.plan[X.planN - 1].close0, sc[0]);
   ok("Prototype: 'receivables slip' = plan without the open invoices", sc[2] === X.slipEnd, sc[2] + " vs " + X.slipEnd);
   ok("Prototype: four small charts on one scale", (await page.$$eval("#scList svg", (e) => e.length)) === 4);
+  const card = await page.$$eval("#scList > li", (lis) => lis.map((li) => ({ cols: getComputedStyle(li).gridTemplateColumns.trim().split(/\s+/).length, tilted: [...li.querySelectorAll("*")].some((x) => getComputedStyle(x).transform !== "none" && x.closest("svg") === null), why: (li.querySelector(".why") || {}).textContent || "", vs: (li.querySelector(".vs") || {}).textContent || "" })));
+  ok("Prototype: every card lays out in one column, nothing borrowed from the lock screen", card.every((c) => c.cols === 1 && !c.tilted), JSON.stringify(card.map((c) => [c.cols, c.tilted])));
+  ok("Prototype: every card explains its assumption in plain words with the numbers", card.every((c) => c.why.length > 60 && /₹/.test(c.why)), card.map((c) => c.why.slice(0, 40)).join(" | "));
+  ok("Prototype: each card says how it compares with the plan", card[0].vs.startsWith("This is the plan") && card.slice(1).every((c) => /(more|less) cash than the plan|Same as the plan/.test(c.vs)), card.map((c) => c.vs).join(" | "));
+  ok("Prototype: the lock screen sticky note style is only used on the lock screen", await page.evaluate(() => [...document.querySelectorAll(".note")].every((n) => n.closest("#gate"))));
 
   /* ---------- TEST ---------- */
   await go("test");

@@ -151,11 +151,18 @@
       "Forecast: spend from the Outflow Forecast sheet (full lines, including GST and TDS, which the sheet's own total leaves out); receipts only where AR Outstanding gives an expected date. Directors' salaries are not in the budget (sheet remark).", "Opening + expected receipts − budget lines");
 
     /* ---------- scenarios (Prototype) ---------- */
+    const pOut = plan.months.map((f) => f.outflow);
+    const budgetTxt = pOut.length && pOut.every((v) => v === pOut[0]) ? inr(pOut[0], 0) + " a month" : plan.months.map((f) => inr(f.outflow, 0) + " in " + f.short).join(" and ");
+    const openAR = arItems.filter((a) => a.expected), arN = openAR.length, arTot = r2(sum(openAR, (a) => a.amount));
+    const NUM = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+    const invTxt = (arN < NUM.length ? NUM[arN] : arN) + " unpaid invoice" + (arN === 1 ? "" : "s") + " (" + inr(arTot, 0) + ")";
+    const arWhen = [...new Set(openAR.map((a) => dateLabel(a.expected)))].join(" and ");
+    const isAre = arN === 1 ? "is" : "are";
     const scenarios = [
-      { id: "plan", name: "Plan as filed", note: "Budget lines from the Outflow Forecast; receivables arrive on the dates the AR sheet gives.", f: plan },
-      { id: "pace", name: "Receipts at this year’s pace", note: "Budget lines, and client money arrives at the " + fyName(curFY) + " average of " + inr(paceIn, 0) + " a month (instead of only the open invoices).", f: forecast({ receipts: "pace" }) },
-      { id: "slip", name: "Receivables slip", note: "Budget lines, and neither open invoice is paid before " + monthLabel(horizonEnd, true) + " ends.", f: forecast({ receipts: "none" }) },
-      { id: "recent", name: "Spend at recent pace", note: "Spend at the last six months' average of " + inr(recentOut, 0) + " a month; receivables on the AR dates.", f: forecast({ spend: "recent" }) },
+      { id: "plan", name: "The plan as it stands", note: "We spend what the budget sheet lists (" + budgetTxt + "). The only money coming in is the " + invTxt + ", paid when the AR sheet expects" + (arWhen ? " (" + arWhen + ")" : "") + ".", f: plan },
+      { id: "pace", name: "Clients keep paying like this year", note: "Spending as in the plan. But instead of only the " + invTxt + ", clients keep paying " + inr(paceIn, 0) + " a month: the average for " + clientFY[0].short + "–" + last.short + " (" + fyName(curFY) + ").", f: forecast({ receipts: "pace" }) },
+      { id: "slip", name: "The unpaid invoices are late", note: "Spending as in the plan, but the " + invTxt + " " + isAre + " not paid before " + monthLabel(horizonEnd, true) + " ends. No money comes in.", f: forecast({ receipts: "none" }) },
+      { id: "recent", name: "Spending stays at recent levels", note: "We spend " + inr(recentOut, 0) + " a month, the average of the last six months (" + safeMonths[0].short + "–" + last.short + "), instead of the budget (" + budgetTxt + "). The " + invTxt + " " + isAre + " paid when the AR sheet expects.", f: forecast({ spend: "recent" }) },
     ];
 
     /* ---------- the verdict ---------- */

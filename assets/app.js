@@ -302,7 +302,8 @@
 
   /* ================= PROTOTYPE ================= */
   function renderPrototype() {
-    $("protoLead").textContent = "Same starting cash (" + inr(last.close, 0) + " on " + M.dateLabel(M.meta.actualTo) + "), four sets of assumptions. All four are forecasts, drawn on the same scale; the dashed line is the plan.";
+    const endKey = M.plan.months.length ? M.plan.months[M.plan.months.length - 1].long : last.long;
+    $("protoLead").textContent = "What if things don't go to plan? Each card changes one assumption and shows where cash would be at the end of " + endKey + ". All four start from the same cash: " + inr(last.close, 0) + " on " + M.dateLabel(M.meta.actualTo) + ". They are forecasts, drawn on the same scale, with the plan dashed for comparison.";
     const hist = M.months.slice(-4), nh = hist.length;
     const all = M.scenarios.flatMap((s) => s.f.months.map((f) => f.close)).concat(hist.map((m) => m.close));
     const dom = [Math.min(...all), Math.max(...all)];
@@ -310,10 +311,13 @@
     $("scList").replaceChildren(...M.scenarios.map((sc) => {
       const f = sc.f.months, end = f[f.length - 1], lo = f.reduce((a, b) => (b.close < a.close ? b : a));
       const chart = h("div", { cls: "chart", role: "img", "aria-label": sc.name + ": cash " + f.map((x) => x.long + " " + inr(x.close)).join(", ") + " (forecast)." });
-      const li = h("li", { cls: sc.id === "plan" ? "on" : null }, [h("span", { cls: "nm", text: sc.name }), chart,
-        h("span", { cls: "l src" }, [tag(true), " " + end.long + " closing"]), wbtn(inr(end.close, 0), "sc:" + sc.id, "end", sc.name + ", " + end.long + " closing " + inr(end.close) + ". Show working."),
-        h("span", { cls: "note", text: "Lowest: " + inr(lo.close, 0) + " in " + lo.long + ". " + sc.note })]);
-      li._draw = () => C.lines(chart, { keys: hist.map((m) => ({ key: m.key, label: m.short.slice(0, 3), fc: false })).concat(f.map((x) => ({ key: x.key, label: x.short.slice(0, 3), fc: true }))), height: 150, endLabels: false, fcLabel: false, domain: dom, tickCount: 3, fmt: tickFmt,
+      const planEnd = M.plan.months[M.plan.months.length - 1].close, d = Math.round(end.close - planEnd);
+      const vs = sc.id === "plan" ? [h("b", { text: "This is the plan." }), " The other three are compared with it."]
+        : d === 0 ? ["Same as the plan."] : [h("b", { text: inr(Math.abs(d), 0) + (d > 0 ? " more" : " less") }), " cash than the plan by the end of " + end.long + "."];
+      const li = h("li", { cls: sc.id === "plan" ? "on" : null }, [h("h3", { cls: "nm", text: sc.name }), h("p", { cls: "why", text: sc.note }), chart,
+        h("span", { cls: "l src" }, [tag(true), " Cash at the end of " + end.long]), wbtn(inr(end.close, 0), "sc:" + sc.id, "end", sc.name + ", " + end.long + " closing " + inr(end.close) + ". Show working."),
+        h("p", { cls: "vs" }, vs), lo.key !== end.key ? h("p", { cls: "vs", text: "Lowest point: " + inr(lo.close, 0) + " in " + lo.long + "." }) : null]);
+      li._draw = () => C.lines(chart, { keys: hist.map((m) => ({ key: m.key, label: m.short.slice(0, 3), fc: false })).concat(f.map((x) => ({ key: x.key, label: x.short.slice(0, 3), fc: true }))), height: 170, endLabels: false, fcLabel: false, domain: dom, tickCount: 3, fmt: tickFmt,
         series: [{ id: "a", color: "var(--in)", values: hist.map((m) => m.close).concat(f.map(() => null)) },
           sc.id !== "plan" ? { id: "p", color: "var(--axis)", dash: "5 5", dots: false, values: hist.map((m, i) => (i === nh - 1 ? last.close : null)).concat(M.plan.months.map((x) => x.close)) } : null,
           { id: sc.id, color: "var(--fc)", dotFrom: nh, values: hist.map((m, i) => (i === nh - 1 ? last.close : null)).concat(f.map((x) => x.close)) }].filter(Boolean),
