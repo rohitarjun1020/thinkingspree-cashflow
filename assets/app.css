@@ -314,7 +314,9 @@ input[type="range"] { width: 100%; accent-color: var(--fc); min-height: 28px; }
 .gate.leaving { opacity: 0; transition: opacity .6s ease-out .2s; }
 .note { position: relative; grid-column: 2; margin-right: clamp(16px, 6vw, 80px); background: #F7E27B; color: #2B2610; padding: 26px 26px 22px; box-shadow: 0 2px 3px rgba(0, 0, 0, .12), 0 14px 30px rgba(0, 0, 0, .18); transform: rotate(-1.2deg); display: grid; gap: 10px; border-radius: 2px; }
 .note::before { content: ""; position: absolute; top: -9px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: #C23B32; box-shadow: 0 2px 2px rgba(0, 0, 0, .3); }
-.note-co { font-size: 12.5px; font-weight: 600; color: #5C4E0E; margin-top: 2px; }
+.note-co { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-top: 2px; padding-top: 12px; border-top: 1px solid rgba(43, 38, 16, .18); font-size: 12.5px; font-weight: 600; color: #5C4E0E; }
+.note-co img { display: block; width: 96px; height: auto; }
+.note-co span { padding-bottom: 1px; }
 .note-h { font: 500 23px/1.25 var(--serif); }
 .note-h em { display: block; font-style: italic; }
 .note-l { font-size: 13px; font-weight: 600; margin-top: 4px; }
