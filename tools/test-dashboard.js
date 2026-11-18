@@ -23,6 +23,12 @@ async (page) => {
   ok("gate shows on a fresh device", await page.isVisible("#gate .note"));
   ok("no figures behind the gate", !(await page.isVisible("#figs")));
   await page.screenshot({ path: SHOTS + "gate.png" });
+  ok("lock screen shows the client logo", await page.evaluate(() => { const i = document.querySelector("#gate image"); return !!i && /ts-logo\.png$/.test(i.getAttribute("href")) && i.getBBox().width > 0; }));
+  ok("door tag says Open", await page.evaluate(() => document.querySelector("#gate .door text").textContent === "Open"));
+  await page.fill("#pc", "abc"); await page.click("#pcShow");
+  ok("Show reveals the passcode", await page.evaluate(() => document.getElementById("pc").type === "text" && document.getElementById("pcShow").getAttribute("aria-pressed") === "true"));
+  await page.click("#pcShow");
+  ok("Hide masks it again", await page.evaluate(() => document.getElementById("pc").type === "password" && document.getElementById("pcShow").textContent === "Show"));
   await page.fill("#pc", "wrong-code"); await page.press("#pc", "Enter"); await page.waitForTimeout(300);
   ok("wrong passcode is refused with a plain message", (await page.textContent("#pcErr")).includes("didn't match"));
   ok("wrong passcode shakes the note", await page.evaluate(() => document.getElementById("gateForm").classList.contains("shake")));

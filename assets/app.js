@@ -416,6 +416,14 @@
     document.body.classList.add("gated"); $("gate").hidden = false; $("app").hidden = true;
     const f = $("gateForm"), inp = $("pc"), err = $("pcErr");
     setTimeout(() => inp.focus(), 50);
+    const sb = $("pcShow");
+    sb.addEventListener("click", () => {
+      const show = inp.type === "password";
+      inp.type = show ? "text" : "password";
+      sb.textContent = show ? "Hide" : "Show";
+      sb.setAttribute("aria-pressed", String(show));
+      sb.setAttribute("aria-label", show ? "Hide passcode" : "Show passcode");
+    });
     f.addEventListener("submit", async (e) => {
       e.preventDefault();
       const ok = (await sha(inp.value)) === PASS_HASH;
