@@ -210,6 +210,10 @@ button.hb { border: 0; background: none; width: 100%; text-align: left; cursor: 
 .hb:hover { background: var(--line-2); }
 
 /* ---------- segmented control ---------- */
+.period { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.range { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; color: var(--ink-2); }
+.range select { min-height: 38px; }
+@media (max-width: 560px) { .period, .range { width: 100%; } .range { display: grid; grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr); } .range select { width: 100%; padding-left: 8px; padding-right: 4px; } }
 .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 9px; padding: 3px; background: var(--paper); }
 .seg button { border: 0; background: transparent; padding: 6px 12px; border-radius: 7px; font-size: 13.5px; cursor: pointer; color: var(--ink-2); min-height: 32px; }
 .seg button[aria-checked="true"] { background: var(--shell); color: #fff; font-weight: 600; }

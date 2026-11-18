@@ -181,12 +181,12 @@
     })();
 
     /* ---------- FY figures ---------- */
-    function fyTotals(y) {
-      const ms = fyMonths(y), t = { months: ms, inflow: r2(sum(ms, (m) => m.inflow)), outflow: r2(sum(ms, (m) => m.outflow)), clientIn: r2(sum(ms, (m) => m.clientIn)), otherIn: r2(sum(ms, (m) => m.otherIn)), opOut: r2(sum(ms, (m) => m.opOut)), nonopOut: r2(sum(ms, (m) => m.nonopOut)) };
-      t.name = fyName(y) + (ms.length < 12 ? " to date" : ""); t.range = ms[0].short + "–" + ms[ms.length - 1].short;
+    function periodTotals(ms, name) {
+      const t = { months: ms, inflow: r2(sum(ms, (m) => m.inflow)), outflow: r2(sum(ms, (m) => m.outflow)), clientIn: r2(sum(ms, (m) => m.clientIn)), otherIn: r2(sum(ms, (m) => m.otherIn)), opOut: r2(sum(ms, (m) => m.opOut)), nonopOut: r2(sum(ms, (m) => m.nonopOut)) };
+      t.name = name; t.range = ms[0].short + "–" + ms[ms.length - 1].short;
       const byLine = {}; ms.forEach((m) => { for (const k in m.v) byLine[k] = (byLine[k] || 0) + m.v[k]; });
       t.clients = D.lines.filter((l) => l.client && byLine[l.id]).map((l) => ({ id: l.id, row: l.row, name: nice(l.name), short: short(l.name), amount: r2(byLine[l.id]) })).sort((a, b) => b.amount - a.amount);
-      t.clients.forEach((c) => (c.share = c.amount / t.clientIn));
+      t.clients.forEach((c) => (c.share = t.clientIn ? c.amount / t.clientIn : 0));
       const groups = {}; ms.forEach((m) => { for (const g in m.groups) groups[g] = (groups[g] || 0) + m.groups[g]; });
       t.spend = Object.keys(groups).filter((g) => D.lines.some((l) => l.group === g && l.dir === "out") && groups[g] > 0).map((g) => ({ id: g, row: meta.groupRows[g], name: meta.groupNames[g], amount: r2(groups[g]), nonop: g === "investment" })).sort((a, b) => b.amount - a.amount);
       t.other = D.lines.filter((l) => l.dir === "in" && !l.client && byLine[l.id]).map((l) => ({ row: l.row, name: nice(l.name), amount: r2(byLine[l.id]) }));
@@ -194,6 +194,16 @@
       t.work = (field, title) => work(title + " · " + t.name, inr(t[field]), "actual", ms.map((m) => ({ label: m.long, value: inr(m[field]), src: src.month(m, field === "clientIn" || field === "inflow" || field === "otherIn" ? "inflow" : "outflow") }))
         .concat([{ label: "Total, " + ms.length + " months", value: inr(t[field]), src: "" }]), field === "clientIn" ? "Client receipts only: rows 12–26. Loans, the fixed deposit and the tax refund are left out." : field === "opOut" ? "Operating spend: everything except the fixed deposit placed (row " + meta.groupRows.investment + ")." : "", "Sum of months");
       return t;
+    }
+    const fyTotals = (y) => { const ms = fyMonths(y); return periodTotals(ms, fyName(y) + (ms.length < 12 ? " to date" : "")); };
+    /* any run of actual months, e.g. rangeTotals("2025-06", "2026-03") */
+    function rangeTotals(from, to) {
+      if (from > to) { const x = from; from = to; to = x; }
+      const ms = months.filter((m) => m.key >= from && m.key <= to);
+      if (!ms.length) return null;
+      const a = ms[0], b = ms[ms.length - 1];
+      const name = ms.length === months.length ? "All " + ms.length + " months" : a.key === b.key ? a.long : a.long + " – " + b.long;
+      return periodTotals(ms, name);
     }
     const FY = fyTotals(curFY), FYprev = fyMonths(curFY - 1).length ? fyTotals(curFY - 1) : null;
 
@@ -276,7 +286,7 @@
     const changedKeys = (() => { const pv = D.prev; if (!pv || !pv.months) return []; return months.filter((m) => { const o = pv.months[m.key]; return !o || ["inflow", "outflow", "close"].some((k) => Math.abs(o[k] - m[k]) > 0.005); }).map((m) => m.key); })();
 
     return {
-      D, meta, months, MK, weeks: W, last, prevM, curFY, FY, FYprev, fyTotals, fyMonths, fyName, safety, runway, plan, forecast, whatIf, fcWork, monthWork,
+      D, meta, months, MK, weeks: W, last, prevM, curFY, FY, FYprev, fyTotals, rangeTotals, fyMonths, fyName, safety, runway, plan, forecast, whatIf, fcWork, monthWork,
       scenarios, verdict, watch, changes, changedKeys, moments, checks, runChecks, arItems, paceIn, recentOut, fcKeys, horizonEnd, budget, lines: L,
       inr, lakh, pct, monthLabel, monthShort, dateLabel, nice, short, work, cellRef, SPRINT_DAYS, MON, MON_LONG,
     };

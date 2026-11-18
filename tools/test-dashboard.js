@@ -63,7 +63,7 @@ async (page) => {
     const salFY = sumL(FY, (l) => l.group === "salaries"), salFYp = sumL(FYp, (l) => l.group === "salaries");
     return {
       lastClose: inr(last.close), lastLong: last.key, oct: { in: inr(last.inflow), out: inr(last.outflow) },
-      monthsN: ms.length, weeksN: D.weeks.length, planN: fcKeys.length, plan: plan.map((p) => ({ key: p.key, close: inr(p.close), close0: inr(p.close, 0), raw: p.close })), slipEnd: inr(slip[slip.length - 1], 0),
+      monthsN: ms.length, firstKey: ms[0].key, lastKey: last.key, weeksN: D.weeks.length, planN: fcKeys.length, plan: plan.map((p) => ({ key: p.key, close: inr(p.close), close0: inr(p.close, 0), raw: p.close })), slipEnd: inr(slip[slip.length - 1], 0),
       fyClient: inr(sumL(FY, (l) => l.client)), fyClient0: inr(sumL(FY, (l) => l.client), 0), fyOp0: inr(sumL(FY, (l) => l.dir === "out" && !l.nonop), 0), salFY0: inr(salFY, 0), salFYp: inr(salFYp),
       fyClientsN: FY.length ? new Set(FY.flatMap((m) => Object.keys(m.v).filter((k) => L[k].client && m.v[k]))).size * 2 : 0,
       runwayDays: String(Math.floor(last.close / (op6 / days6))),
@@ -122,6 +122,33 @@ async (page) => {
   await page.click("#clients .hb"); await page.waitForTimeout(150);
   ok("Sketch: client bar shows its working", (await page.textContent("#workTitle")).includes("National Entrepreneurship"));
   await page.keyboard.press("Escape");
+  /* custom month range */
+  const rng = (from, to) => page.evaluate(([a, b]) => {
+    const D = window.TS_DATA, L = {}; D.lines.forEach((l) => (L[l.id] = l));
+    const f2 = new Intl.NumberFormat("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const ms = D.months.filter((m) => m.key >= a && m.key <= b);
+    const client = ms.reduce((s, m) => s + Object.keys(m.v).filter((k) => L[k].client).reduce((x, k) => x + m.v[k], 0), 0);
+    return { n: ms.length, client: "₹" + f2.format(Math.round(client * 100) / 100) };
+  }, [from, to]);
+  const shown = async () => ({ bars: await page.$$eval("#ioChart path.bar", (e) => e.length), total: ((await page.textContent("#clients")).match(/Total client money (₹[\d,]+\.\d\d)/) || [])[1], head: await page.textContent("#h-clients"), checked: await page.$$eval("#fyPick button[aria-checked=true]", (e) => e.map((b) => b.textContent)), from: await page.inputValue("#rFrom"), to: await page.inputValue("#rTo") });
+  await page.selectOption("#rFrom", "2025-06"); await page.selectOption("#rTo", "2026-03"); await page.waitForTimeout(200);
+  let e1 = await rng("2025-06", "2026-03"), s1 = await shown();
+  ok("Sketch range: Jun 2025 to Mar 2026 draws one pair of columns per month", s1.bars === e1.n * 2, s1.bars + " vs " + e1.n * 2);
+  ok("Sketch range: client money total matches the raw workbook months", s1.total === e1.client, s1.total + " vs " + e1.client);
+  ok("Sketch range: headings name the range and no preset stays ticked", s1.head.includes("June 2025 – March 2026") && s1.checked.length === 0, s1.head + " / " + s1.checked);
+  await page.click("#clients .hb"); await page.waitForTimeout(150);
+  ok("Sketch range: client working covers the chosen months", (await page.textContent("#workTitle")).includes("June 2025 – March 2026"));
+  await page.keyboard.press("Escape");
+  await page.selectOption("#rFrom", "2026-05"); await page.waitForTimeout(200);
+  let s2 = await shown();
+  ok("Sketch range: a From after To moves To along (one month)", s2.from === "2026-05" && s2.to === "2026-05" && s2.bars === 2, JSON.stringify(s2));
+  const fyKeys = await page.evaluate(() => { const ms = window.TS_DATA.months, k = ms[ms.length - 1].key, y = +k.slice(5) >= 4 ? +k.slice(0, 4) : +k.slice(0, 4) - 1; return [y + "-04", k]; });
+  await page.selectOption("#rFrom", fyKeys[0]); await page.selectOption("#rTo", fyKeys[1]); await page.waitForTimeout(200);
+  ok("Sketch range: picking this year's months ticks the year button", (await shown()).checked.join() === (await page.textContent("#fyPick button"))); 
+  await page.click("#fyPick button:has-text('All months')"); await page.waitForTimeout(200);
+  let s3 = await shown();
+  ok("Sketch range: All months resets the From and To boxes", s3.from === X.firstKey && s3.to === X.lastKey, s3.from + "–" + s3.to);
+  await page.click("#fyPick button"); await page.waitForTimeout(200);
   await page.screenshot({ path: SHOTS + "sketch.png", fullPage: true });
 
   /* ---------- DECIDE (What-if) ---------- */

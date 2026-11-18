@@ -57,7 +57,11 @@
     if (p[0] === "week") { const w = M.weeks[+p[1]]; return M.work("Week " + w.label + " · closing", inr(w.close), "actual", [{ label: "Opening", value: inr(w.open), src: M.cellRef(M.meta.rows.open, w.col) }, { label: "+ Money in", value: inr(w.inflow), src: M.cellRef(M.meta.rows.inflow, w.col) }, { label: MINUS + " Money out", value: inr(w.outflow), src: M.cellRef(M.meta.rows.outflow, w.col) }, { label: "= Closing", value: inr(w.close), src: "Opening + in − out" }], w.sheet && Math.abs(w.sheet.close - w.close) > 0.005 ? "The sheet shows " + inr(w.sheet.close) + " for this week because its weekly opening cell is blank; the dashboard carries the previous week's close forward." : "", "Opening + in − out"); }
     return null;
   }
-  function fyT(sel) { return sel === "all" ? allT : sel === "prev" ? M.FYprev : M.FY; }
+  /* sel: "cur" | "prev" | "all" | "r<from>_<to>" (a month range, e.g. "r2025-06_2026-03"; no colons, so it fits inside working ids) */
+  function fyT(sel) {
+    if (sel && sel[0] === "r") { const p = sel.slice(1).split("_"); return M.rangeTotals(p[0], p[1]) || M.FY; }
+    return sel === "all" ? allT : sel === "prev" ? M.FYprev : M.FY;
+  }
   function groupWork(kind, id, sel) {
     const T = fyT(sel), ms = T.months;
     const ids = kind === "client" ? [id] : M.D.lines.filter((l) => l.group === id).map((l) => l.id);
@@ -213,19 +217,21 @@
   $("replayBtn").addEventListener("click", replay);
 
   /* ================= SKETCH ================= */
-  const allT = (() => { const t = M.fyTotals(M.curFY); const ms = M.months; const out = { months: ms, name: "All " + ms.length + " months", range: ms[0].short + "–" + last.short };
-    ["inflow", "outflow", "clientIn", "otherIn", "opOut", "nonopOut"].forEach((f) => (out[f] = ms.reduce((s, m) => s + m[f], 0)));
-    const byLine = {}; ms.forEach((m) => { for (const k in m.v) byLine[k] = (byLine[k] || 0) + m.v[k]; });
-    out.clients = M.D.lines.filter((l) => l.client && byLine[l.id]).map((l) => ({ id: l.id, row: l.row, name: M.nice(l.name), short: M.short(l.name), amount: byLine[l.id], share: byLine[l.id] / out.clientIn })).sort((a, b) => b.amount - a.amount);
-    const g = {}; ms.forEach((m) => { for (const k in m.groups) g[k] = (g[k] || 0) + m.groups[k]; });
-    out.spend = Object.keys(g).filter((k) => M.D.lines.some((l) => l.group === k && l.dir === "out") && g[k] > 0).map((k) => ({ id: k, name: M.meta.groupNames[k], amount: g[k], nonop: k === "investment" })).sort((a, b) => b.amount - a.amount);
-    out.byLine = byLine; out.work = (field, title) => M.work(title + " · " + out.name, inr(out[field]), "actual", ms.map((m) => ({ label: m.long, value: inr(m[field]), src: "" })).concat([{ label: "Total", value: inr(out[field]), src: "" }]), "", "Sum of months");
-    void t; return out; })();
+  const allT = M.rangeTotals(M.months[0].key, last.key);
   let fySel = "cur";
   function renderSketch() {
-    const opts = [["cur", M.FY.name], ["prev", M.FYprev ? M.FYprev.name : null], ["all", "All months"]].filter((o) => o[1]);
-    $("fyPick").replaceChildren(...opts.map((o) => { const b = h("button", { type: "button", role: "radio", "aria-checked": String(o[0] === fySel), text: o[1] }); b.addEventListener("click", () => { fySel = o[0]; renderSketch(); }); return b; }));
-    const T = fyT(fySel);
+    const presets = [["cur", M.FY, M.FY.name], ["prev", M.FYprev, M.FYprev ? M.FYprev.name : null], ["all", allT, "All months"]].filter((o) => o[1]);
+    $("fyPick").replaceChildren(...presets.map((o) => { const b = h("button", { type: "button", role: "radio", "aria-checked": String(o[0] === fySel), text: o[2] }); b.addEventListener("click", () => { fySel = o[0]; renderSketch(); }); return b; }));
+    const T = fyT(fySel), rf = $("rFrom"), rt = $("rTo");
+    if (!rf.options.length) [rf, rt].forEach((sel) => sel.replaceChildren(...M.months.map((m) => h("option", { value: m.key, text: m.long }))));
+    rf.value = T.months[0].key; rt.value = T.months[T.months.length - 1].key;
+    const pick = (changed) => {
+      let a = rf.value, b = rt.value;
+      if (a > b) { if (changed === "from") b = a; else a = b; }
+      const hit = presets.find((o) => o[1].months[0].key === a && o[1].months[o[1].months.length - 1].key === b);
+      fySel = hit ? hit[0] : "r" + a + "_" + b; renderSketch();
+    };
+    rf.onchange = () => pick("from"); rt.onchange = () => pick("to");
     $("ioKey").replaceChildren(h("span", {}, [h("i", { cls: "sw", style: "background:var(--ser-in)" }), "Client money in"]), h("span", {}, [h("i", { cls: "sw", style: "background:var(--ser-out)" }), "Operating money out"]));
     C.columns($("ioChart"), { groups: T.months.map((m) => ({ key: m.key, label: m.short, values: [m.clientIn, m.opOut], m })), series: [{ color: "var(--ser-in)" }, { color: "var(--ser-out)" }], fmt: tickFmt,
       onHover: (k, e, g) => { hl(k); showTip(e, g.m.long, [{ label: "Client money in", value: inr(g.m.clientIn), color: "var(--ser-in)" }, { label: "Operating out", value: inr(g.m.opOut), color: "var(--ser-out)" }, { label: "Difference", value: inr(g.m.clientIn - g.m.opOut) }], false); }, onLeave: leave });
