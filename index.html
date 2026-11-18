@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thinking Spree · Cash</title>
+<meta name="description" content="Thinking Spree's cash flow: where cash stands, what came in and went out, and what the plan says next. Built from the monthly Cash Flow workbook.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23173A2D'/%3E%3Ccircle cx='11' cy='16' r='4.5' fill='%234FA676'/%3E%3Ccircle cx='21' cy='16' r='4' fill='none' stroke='%23E08640' stroke-width='2.2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css?v=202611181840">
+<script>try{var t=localStorage.getItem("ts.theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the figures</a>
+
+<!-- passcode gate: the studio before the day starts -->
+<div id="gate" class="gate" hidden>
+  <div class="gate-scene" id="gateScene" aria-hidden="true">
+    <svg class="gate-2d" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="gWall" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EDE6D8"/><stop offset="1" stop-color="#D9D6CB"/></linearGradient>
+        <linearGradient id="gSun" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE7B8" stop-opacity=".75"/><stop offset="1" stop-color="#FFE7B8" stop-opacity="0"/></linearGradient>
+        <radialGradient id="gLamp" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFD58A" stop-opacity=".9"/><stop offset="1" stop-color="#FFD58A" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="1200" height="800" fill="url(#gWall)"/>
+      <polygon points="0,0 380,0 760,520 0,640" fill="url(#gSun)"/>
+      <g class="wb"><rect x="330" y="90" width="560" height="320" rx="6" fill="#F8F9F7" stroke="#B9BEC2" stroke-width="10"/>
+        <rect x="350" y="400" width="520" height="10" fill="#A7ADB2"/>
+        <g class="wb-ink" fill="none" stroke="#2457A6" stroke-width="4" stroke-linecap="round">
+          <path d="M380 180 h70 M470 180 l14 0 M500 180 h70 M590 180 l14 0 M620 180 h70 M710 180 l14 0 M740 180 h110"/>
+          <path d="M385 300 C 440 260, 470 330, 520 280 S 610 230, 650 300 S 760 340, 840 250" stroke="#1F6B45"/>
+        </g>
+        <g class="wb-ink" font-family="Schibsted Grotesk, sans-serif" font-size="20" font-weight="600" fill="#2457A6"><text x="384" y="160">Map</text><text x="497" y="160">Sketch</text><text x="612" y="160">Decide</text><text x="716" y="160">Prototype</text><text x="808" y="160">Test</text></g>
+      </g>
+      <rect x="0" y="560" width="1200" height="240" fill="#B88A5A"/><rect x="0" y="560" width="1200" height="14" fill="#9E7247"/>
+      <g class="plant"><rect x="930" y="470" width="90" height="96" rx="8" fill="#C9653A"/><ellipse cx="955" cy="440" rx="22" ry="58" fill="#2F6B45" transform="rotate(-22 955 440)"/><ellipse cx="985" cy="420" rx="20" ry="70" fill="#3B8255"/><ellipse cx="1012" cy="445" rx="20" ry="55" fill="#2F6B45" transform="rotate(25 1012 445)"/></g>
+      <g class="notebook"><rect x="430" y="590" width="250" height="150" rx="6" fill="#173A2D" transform="rotate(-6 555 665)"/><rect x="445" y="600" width="10" height="130" fill="#E07B2E" transform="rotate(-6 555 665)"/></g>
+      <g class="lamp"><circle class="lamp-glow" cx="250" cy="520" r="260" fill="url(#gLamp)"/><rect x="190" y="600" width="120" height="16" rx="8" fill="#2A2F33"/><path d="M250 600 L 210 420 L 290 340" stroke="#2A2F33" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M252 318 Q300 282 352 334 Z" fill="#2A2F33"/></g>
+    </svg>
+  </div>
+  <form class="note" id="gateForm" autocomplete="off">
+    <h1 class="note-h">The studio opens at 9.<em>Passcode, please.</em></h1>
+    <label for="pc" class="note-l">Passcode</label>
+    <input id="pc" name="pc" type="password" inputmode="text" autocomplete="current-password" spellcheck="false" required aria-describedby="pcErr">
+    <label class="note-rem"><input type="checkbox" id="rem" checked> Remember this device</label>
+    <button type="submit" class="note-go">Open the studio</button>
+    <p id="pcErr" class="note-err" role="alert" aria-live="assertive"></p>
+    <p class="note-co">Thinking Spree Strategy Advisors</p>
+  </form>
+</div>
+
+<div id="app" class="app" hidden>
+<header class="shell">
+  <div class="shell-top">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span><span>Thinking Spree</span><span class="brand-sub">Cash</span></div>
+    <p class="asof" id="asof"></p>
+    <button class="books" id="booksBadge" type="button" data-go="test"></button>
+    <div class="shell-tools">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch light or dark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <button class="icon-btn" id="lockBtn" type="button" aria-label="Lock this device"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Sections" id="tabs">
+    <a href="#map" data-tab="map"><b>Map</b><small>Where cash stands</small></a>
+    <a href="#sketch" data-tab="sketch"><b>Sketch</b><small>Trends</small></a>
+    <a href="#decide" data-tab="decide"><b>Decide</b><small>What-if</small></a>
+    <a href="#prototype" data-tab="prototype"><b>Prototype</b><small>Scenarios</small></a>
+    <a href="#test" data-tab="test"><b>Test</b><small>Checks</small></a>
+    <a href="#ask" data-tab="ask"><b>Ask</b><small>the data</small></a>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+  <!-- MAP -->
+  <section class="stage" id="s-map" data-stage="map" aria-labelledby="h-map">
+    <div class="map-grid">
+      <div class="map-main">
+        <h2 class="verdict" id="h-map"><span id="vHead"></span><em id="vTail"></em></h2>
+        <p class="verdict-sub" id="vSub"></p>
+        <div class="figs" id="figs"></div>
+        <div class="chart-block">
+          <div class="chart-head">
+            <h3>Cash at each month-end</h3>
+            <p class="key" id="cashKey"></p>
+            <div class="chart-tools">
+              <button class="btn" id="replayBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg><span>Replay</span></button>
+              <button class="btn ghost" type="button" data-table="cash">Table</button>
+            </div>
+          </div>
+          <div class="cash-wrap">
+            <div class="chart" id="cashChart" role="img"></div>
+            <ol class="margin" id="cashMargin" aria-label="Exact month-end figures"></ol>
+          </div>
+          <p class="replay-line" id="replayLine" aria-live="polite"></p>
+          <div class="tbl-wrap" id="tbl-cash" hidden></div>
+        </div>
+      </div>
+      <aside class="watch" aria-labelledby="h-watch">
+        <div class="watch-head"><h2 id="h-watch">Watch list</h2><p class="watch-key" id="watchKey"></p></div>
+        <ol class="notes" id="watch"></ol>
+      </aside>
+    </div>
+    <div class="row-2">
+      <div class="panel">
+        <h3 id="h-month"></h3>
+        <div id="monthCard"></div>
+      </div>
+      <div class="panel">
+        <h3 id="h-changes"></h3>
+        <ol class="changes" id="changes"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKETCH -->
+  <section class="stage" id="s-sketch" data-stage="sketch" aria-labelledby="h-sketch" hidden>
+    <div class="stage-head"><h2 id="h-sketch">How cash has moved</h2>
+      <div class="seg" role="radiogroup" aria-label="Period" id="fyPick"></div></div>
+    <div class="chart-block">
+      <div class="chart-head"><h3>Client money in vs operating money out, by month</h3><p class="key" id="ioKey"></p><div class="chart-tools"><button class="btn ghost" type="button" data-table="io">Table</button></div></div>
+      <div class="chart" id="ioChart" role="img"></div>
+      <div class="tbl-wrap" id="tbl-io" hidden></div>
+    </div>
+    <div class="row-2">
+      <div class="panel"><h3 id="h-clients">Where client money came from</h3><div id="clients" class="hbars"></div></div>
+      <div class="panel"><h3 id="h-spend">Where the money went</h3><div id="spend" class="hbars"></div></div>
+    </div>
+    <div class="row-2">
+      <div class="panel"><h3>Every week since April 2025, by closing cash</h3><div class="chart" id="weekDots" role="img"></div><p class="key" id="weekKey"></p></div>
+      <div class="panel"><h3>Spend against the Outflow Forecast budget</h3><div class="chart" id="budgetChart" role="img"></div><p class="key" id="budgetKey"></p></div>
+    </div>
+    <div class="panel"><h3>Money that is not from clients or for operations</h3><p class="lead">Loans, the fixed deposit and the tax refund move cash but are not earnings or running costs, so the charts above leave them out. They are still in every total.</p><div id="otherMoney"></div></div>
+  </section>
+
+  <!-- DECIDE -->
+  <section class="stage" id="s-decide" data-stage="decide" aria-labelledby="h-decide" hidden>
+    <div class="stage-head"><h2 id="h-decide">What if?</h2><p class="lead" id="wiLead"></p></div>
+    <div class="wi-grid">
+      <form class="wi-controls" id="wiForm" onsubmit="return false">
+        <fieldset><legend>A client pays late</legend><div id="wiDelays"></div></fieldset>
+        <fieldset><legend>Cut a cost line</legend>
+          <label class="field"><span>Line</span><select id="wiCutLine"></select></label>
+          <label class="field"><span>Cut by <output id="wiCutOut">0%</output></span><input type="range" id="wiCut" min="0" max="100" step="5" value="0"></label></fieldset>
+        <fieldset><legend>Add a new retainer</legend>
+          <label class="field"><span>Per month <output id="wiRetOut">₹0</output></span><input type="range" id="wiRet" min="0" max="1000000" step="25000" value="0"></label>
+          <label class="field"><span>From</span><select id="wiRetFrom"></select></label></fieldset>
+        <button class="btn ghost" type="button" id="wiReset">Back to the plan</button>
+      </form>
+      <div class="wi-out">
+        <p class="wi-verdict" id="wiVerdict" aria-live="polite"></p>
+        <div class="chart" id="wiChart" role="img"></div>
+        <p class="key" id="wiKey"></p>
+        <div id="wiTable"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROTOTYPE -->
+  <section class="stage" id="s-prototype" data-stage="prototype" aria-labelledby="h-proto" hidden>
+    <div class="stage-head"><h2 id="h-proto">Four ways the next two months could go</h2><p class="lead" id="protoLead"></p></div>
+    <p class="key" id="scKey"></p>
+    <ol class="scen" id="scList"></ol>
+    <div class="panel"><h3>Checkpoints on the plan</h3><div id="planTable"></div></div>
+  </section>
+
+  <!-- TEST -->
+  <section class="stage" id="s-test" data-stage="test" aria-labelledby="h-test" hidden>
+    <div class="stage-head"><h2 id="h-test">Do the books balance?</h2><p class="lead" id="testLead"></p></div>
+    <ol class="checks" id="checks"></ol>
+    <div class="panel"><h3>Five key figures against the workbook</h3><div id="xcheck"></div></div>
+    <div class="panel"><h3>Things we found in the workbook</h3><ol class="quirks" id="quirks"></ol></div>
+    <div class="panel"><h3>Every month</h3><div id="allMonths"></div></div>
+    <p class="src" id="srcLine"></p>
+  </section>
+
+  <!-- ASK -->
+  <section class="stage" id="s-ask" data-stage="ask" aria-labelledby="h-ask" hidden>
+    <div class="stage-head"><h2 id="h-ask">Ask the data</h2><p class="lead">Answers come straight from the figures on this page: no AI, no login. For open-ended questions, ask Claude with the same figures.</p>
+      <a class="btn claude" id="askClaude" href="#" target="_blank" rel="noopener">Ask Claude<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    <div class="chat">
+      <ol class="chat-log" id="chatLog" aria-live="polite"></ol>
+      <div class="chips" id="chips"></div>
+      <form class="chat-form" id="chatForm"><label class="sr" for="chatIn">Your question</label><input id="chatIn" type="text" placeholder="e.g. What did NEN pay this year?" autocomplete="off"><button class="btn" type="submit">Ask</button></form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="foot"></footer>
+</div>
+
+<div class="tip" id="tip" role="tooltip" hidden></div>
+<aside class="work" id="work" role="dialog" aria-modal="false" aria-labelledby="workTitle" hidden>
+  <div class="work-head"><p class="work-k" id="workStatus"></p><button class="icon-btn" id="workClose" type="button" aria-label="Close working"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <h2 id="workTitle"></h2>
+  <p class="work-v" id="workValue"></p>
+  <p class="work-f" id="workFormula"></p>
+  <ol class="work-steps" id="workSteps"></ol>
+  <p class="work-n" id="workNote"></p>
+</aside>
+
+<script src="dashboard-data.js?v=202611181840"></script>
+<script src="assets/model.js?v=202611181840"></script>
+<script src="assets/charts.js?v=202611181840"></script>
+<script src="assets/ask.js?v=202611181840"></script>
+<script src="assets/app.js?v=202611181840"></script>
+</body>
+</html>
