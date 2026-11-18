@@ -4,7 +4,7 @@
   "use strict";
   /* Passcode: SHA-256 of the placeholder passcode. To change it, see MONTHLY-UPDATE.md.
      On a public site this keeps casual visitors out; it is not real security. */
-  const PASS_HASH = "460a73f2de33f9ddbd105696fbe61e3c89b5f4042b92635116de627955ae7754";
+  const PASS_HASH = "b4d1b2cff12bafe2bd2e51cd15becdc6237b30a0861b137544b6fb8ca2d4477f";
   const OK_KEY = "ts.ok";
   /* Ask Claude: the private claude.ai page fed with the same figures (empty = button hidden). */
   const ASK_CLAUDE_URL = "https://claude.ai/artifact/S3ibYFXMgg3uDGa8F2BLAb";

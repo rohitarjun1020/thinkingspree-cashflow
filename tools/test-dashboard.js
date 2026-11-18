@@ -6,7 +6,10 @@
 // Expected values are worked out here straight from window.TS_DATA (the workbook data), not from the app's model.
 async (page) => {
   const BASE = "http://127.0.0.1:8780/";
-  const PASS = "Spree@Studio2026";
+  /* The passcode is never stored in this public repo. Run with:
+     TS_PASS='<passcode>' playwright-cli run-code "$(sed "s/__TS_PASS__/$TS_PASS/" tools/test-dashboard.js)" */
+  const PASS = "__TS_PASS__";
+  if (PASS.startsWith("__")) return "Set TS_PASS to the passcode before running the tests (see the top of tools/test-dashboard.js).";
   const SHOTS = "C:/Users/Rohit SRF/Thinking Spree Dashboard/.impeccable/review/";
   const R = [], errors = [];
   const ok = (name, cond, info) => R.push((cond ? "PASS " : "FAIL ") + name + (info !== undefined && !cond ? "  [" + info + "]" : ""));
